@@ -1,43 +1,21 @@
+from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from core.models import Question
+
+from core.models import Question, Test
 from core.serializers import QuestionSerialazer
 
 
-class QuestionAPIView(APIView):
-    def get(self, request):
-        lst = Question.objects.all()
-        return Response({'lst': QuestionSerialazer(lst, many=True).data})
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerialazer
 
-    def post(self, request):
-        serialazer = QuestionSerialazer(data=request.data)
-        serialazer.is_valid(raise_exception=True)
-        serialazer.save()
-        return Response({"post": serialazer.data})
+    @action(methods=['GET', 'POST', 'PUT', 'DELETE'], detail=True)
+    def test(self, request, pk=None):
+        test = Test.objects.get(pk=pk)
+        return Response({'tests': test.title})
 
-    def put(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({"error": "method PUT not allolwed!"})
-
-        try:
-            instance = Question.objects.get(pk=pk)
-        except:
-            return Response({"error": "Obj doesn't exists"})
-
-        serialazer = QuestionSerialazer(data=request.data, instance=instance)
-        serialazer.is_valid(raise_exception=True)
-        serialazer.save()
-        return Response({"post": serialazer.data})
-
-    def delete(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({"error": "method DELETE not allolwed!"})
-        try:
-            Question.objects.filter(pk=pk).delete()
-        except:
-            return Response({"error": "Obj doesn't exists"})
-
-        return Response({"message": f"question id: {pk} has delete"})
-
+    @action(methods=['GET'], detail=False)
+    def tests(self, request):
+        test = Test.objects.all()
+        return Response({'tests': [t.title for t in test]})
