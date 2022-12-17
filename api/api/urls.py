@@ -17,10 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 from core.views import QuestionViewSet
-
 from rest_framework import routers
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'questions', QuestionViewSet)
 
 urlpatterns = [
