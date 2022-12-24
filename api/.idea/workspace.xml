@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="255d017c-f663-40d4-84d0-59b91ef22a57" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/assets/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Secure.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/vite.config.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +106,9 @@
       <workItem from="1671202568168" duration="371000" />
       <workItem from="1671266138714" duration="12501000" />
       <workItem from="1671348195229" duration="1140000" />
+      <workItem from="1671869119040" duration="962000" />
+      <workItem from="1671877277402" duration="606000" />
+      <workItem from="1671879671672" duration="1210000" />
     </task>
     <servers />
   </component>
