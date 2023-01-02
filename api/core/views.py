@@ -15,7 +15,7 @@ class QuestionsPagList(PageNumberPagination):
 class QuestionAPIList(generics.ListCreateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerialazer
-    # permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 
 

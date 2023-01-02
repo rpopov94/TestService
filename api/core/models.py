@@ -1,11 +1,10 @@
-import datetime
-
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Question(models.Model):
-    title = models.CharField(max_length=255)
+    title = RichTextUploadingField()
     q1 = models.CharField(max_length=255)
     q2 = models.CharField(max_length=255)
     q3 = models.CharField(max_length=255)
