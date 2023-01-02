@@ -1,22 +1,29 @@
 # client
 
-> My dazzling Nuxt.js project
+This template should help get you started developing with Vue 3 in Vite.
 
-## Build Setup
+## Recommended IDE Setup
 
-```bash
-# install dependencies
-$ npm install
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## Customize configuration
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-# generate static project
-$ npm run generate
+## Project Setup
+
+```sh
+npm install
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
