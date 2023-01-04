@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
-from core.views import QuestionAPIList, QuestionAPIUpdate, QuestionAPIDestroy
+from core.views import QuestionAPIList, QuestionAPIUpdate, QuestionAPIDestroy, ThemeAPIList, ThemeAPIUpdate, ThemeAPIDestroy
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -17,4 +17,7 @@ urlpatterns = [
     path('api/v1/questions/', QuestionAPIList.as_view()),
     path('api/v1/questions/<int:pk>/', QuestionAPIUpdate.as_view()),
     path('api/v1/questions/delete/<int:pk>', QuestionAPIDestroy.as_view()),
+    path('api/v1/themes/', ThemeAPIList.as_view()),
+    path('api/v1/themes/<int:pk>/', ThemeAPIUpdate.as_view()),
+    path('api/v1/themes/delete/<int:pk>', ThemeAPIDestroy.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
