@@ -1,58 +1,26 @@
 <template>
-  <div class="container">
-    <h1>Список тестов</h1>
-    <div v-for="question in questions" :key="question.title">
-      <div>{{question.title}}</div>
+  <div>
+    <h1>Привет, это главная страница</h1>
+    <div v-for="post in posts" :key="post.slug" class="blog">
+      <div class="blog-title">{{ post.title}}</div>
+      <div class="blog-introtext">{{ post.comments_count }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import axios from "axios";
 export default {
-  data() {
+  async asyncData(ctx) {
+    const { data } = await axios.get(`http://127.0.0.1:8000/api/v1/questions/`);
+    console.log(data);
     return {
-      questions: []
+      posts: data.results,
     }
-  },
-  async fetch() {
-    this.questions = await fetch(
-      'http://127.0.0.1:8000/api/v1/questions/'
-    ).then(res => res.json())
-    console.log(this.questions.result)
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>

@@ -47,6 +47,8 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
   /*
   ** Build configuration
@@ -57,5 +59,32 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  auth: {
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        token: {
+          property: 'access',
+          maxAge: 1800,
+          type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refresh',
+          data: 'refresh',
+          maxAge: 60 * 60 * 24 * 30
+        },
+        endpoints: {
+          login: { url: '/api/v1/token/', method: 'post' },
+          refresh: { url: '/api/v1/token/refresh/', method: 'post' },
+          user: { url: '/api/v1/profile/', method: 'get' },
+          logout: false
+        },
+        tokenRequired: true,
+      }
+    }
+  },
+  axios: {
+    baseURL: 'http://localhost:8000'
+  },
 }
