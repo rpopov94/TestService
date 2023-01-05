@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       login: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: 'password'
       },
     }
   },

@@ -4,7 +4,9 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
-from core.serializers import QuestionSerialazer, ThemeSerialazer
+from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer
+from rest_framework import permissions
+from rest_framework.response import Response
 
 
 class QuestionsPagList(PageNumberPagination):
@@ -15,30 +17,40 @@ class QuestionsPagList(PageNumberPagination):
 class QuestionAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerialazer
-    # permission_classes = (IsOwnerOrReadOnly, )
+    permission_classes = (IsOwnerOrReadOnly, )
 
 
 class QuestionAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerialazer
-    # permission_classes = (IsAdminOrReadOnly, )
+    permission_classes = (IsAdminOrReadOnly, )
 
 class ThemeAPIList(generics.ListCreateAPIView):
     queryset = Test.objects.all()
     serializer_class = ThemeSerialazer
-    # permission_classes = (IsAuthenticatedOrReadOnly, )
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 
 
 class ThemeAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Test.objects.all()
     serializer_class = ThemeSerialazer
-    # permission_classes = (IsOwnerOrReadOnly, )
+    permission_classes = (IsOwnerOrReadOnly, )
 
 
 class ThemeAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Test.objects.all()
     serializer_class = ThemeSerialazer
-    # permission_classes = (IsAdminOrReadOnly, )
+    permission_classes = (IsAdminOrReadOnly, )
+    
+
+class ProfileView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get(self, request, *args,  **kwargs):
+        return Response({
+            "user": UserSerializer(request.user, context=self.get_serializer_context()).data,
+        })
 
 
