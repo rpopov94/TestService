@@ -13,4 +13,4 @@ class ThemeSerialazer(serializers.ModelSerializer):
     questions = QuestionSerialazer(many=True)
     class Meta:
         model = Test
-        fields = ['title', 'questions']
+        fields = ['name', 'questions']

@@ -12,13 +12,6 @@ class QuestionsPagList(PageNumberPagination):
     page_query_param = 'page_size'
     max_page_size = 100
 
-class QuestionAPIList(generics.ListCreateAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerialazer
-    # permission_classes = (IsAuthenticatedOrReadOnly, )
-    pagination_class = QuestionsPagList
-
-
 class QuestionAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerialazer

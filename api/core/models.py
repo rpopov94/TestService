@@ -4,7 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Test(models.Model):
-    title = models.CharField(max_length=255, db_index=True)
+    name = models.CharField(max_length=255, db_index=True)
 
     def __str__(self) -> str:
         return self.title
