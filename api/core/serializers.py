@@ -10,6 +10,7 @@ class QuestionSerialazer(serializers.ModelSerializer):
         
 
 class ThemeSerialazer(serializers.ModelSerializer):
+    questions = QuestionSerialazer(many=True)
     class Meta:
         model = Test
-        fields = "__all__"
+        fields = ['title', 'questions']
