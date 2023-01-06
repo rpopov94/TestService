@@ -7,6 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+import dj_rest_auth
 
 
 urlpatterns = [

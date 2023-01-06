@@ -65,7 +65,7 @@ export default {
           maxAge: 60 * 60 * 24 * 30
         },
         endpoints: {
-          login: { url: '/api/token/', method: 'post' },
+          login: { url: 'api/token/', method: 'post' },
           refresh: { url: '/api/refresh_token/', method: 'post' },
           user: { url: '/api/profile/', method: 'get' },
           logout: false
@@ -77,8 +77,10 @@ export default {
   axios: {
     baseURL: 'http://localhost:8000',
     headers :{
-      mode: 'cors',
-      credentials: 'include',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
     },
   },
 }
