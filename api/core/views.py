@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
-from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer
+from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, RegisterSerializer
 from rest_framework import permissions
 from rest_framework.response import Response
 
@@ -57,4 +57,19 @@ class ProfileView(generics.GenericAPIView):
         return Response({
             "user": UserSerializer(request.user, context=self.get_serializer_context()).data,
         })
+
+class RegisterView(generics.GenericAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = RegisterSerializer
+
+    def post(self, request, *args,  **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "message": "Пользователь успешно создан",
+        })
+
+
 
