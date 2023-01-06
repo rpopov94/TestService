@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <span class="navbar-nav mr-auto"></span>
-      <span class="navbar-text mr-2">{{user}}</span>
+      <span class="navbar-text mr-2">{{user?.username}}</span>
       <nuxt-link class="btn btn-outline-light mr-2" to="/signout">Выход</nuxt-link>
       <nuxt-link class="btn btn-outline-light mr-2" to="/signin">Вход</nuxt-link>
       <nuxt-link class="btn btn-outline-light mr-2" to="/signup">Регистрация</nuxt-link>
