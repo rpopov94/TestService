@@ -44,22 +44,12 @@ export default {
   /*
   ** Nuxt.js modules
   */
+
   modules: [
-    // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
   ],
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
-  },
   auth: {
     strategies: {
       local: {
@@ -75,9 +65,9 @@ export default {
           maxAge: 60 * 60 * 24 * 30
         },
         endpoints: {
-          login: { url: '/api/v1/token/', method: 'post' },
-          refresh: { url: '/api/v1/token/refresh/', method: 'post' },
-          user: { url: '/api/v1/profile/', method: 'get' },
+          login: { url: 'api/token/', method: 'post' },
+          refresh: { url: '/api/refresh_token/', method: 'post' },
+          user: { url: '/api/profile/', method: 'get' },
           logout: false
         },
         tokenRequired: true,
@@ -85,6 +75,12 @@ export default {
     }
   },
   axios: {
-    baseURL: 'http://localhost:8000'
+    baseURL: 'http://localhost:8000',
+    headers :{
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+    },
   },
 }
