@@ -8,6 +8,8 @@ from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer
 from rest_framework import permissions
 from rest_framework.response import Response
 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
 
 class QuestionsPagList(PageNumberPagination):
     page_size = 4
@@ -43,6 +45,9 @@ class ThemeAPIDestroy(generics.RetrieveDestroyAPIView):
     serializer_class = ThemeSerialazer
     permission_classes = (IsAdminOrReadOnly, )
     
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+    def enforce_csrf(self, request):
+        return 
 
 class ProfileView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -52,5 +57,4 @@ class ProfileView(generics.GenericAPIView):
         return Response({
             "user": UserSerializer(request.user, context=self.get_serializer_context()).data,
         })
-
 
