@@ -15,8 +15,10 @@
 import axios from "axios";
 
 export default {
+  middleware: ["auth"],
     async asyncData(ctx) {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/themes/`);
+    // this.$router.push('/')
     return {
       posts: data.results,
     }
