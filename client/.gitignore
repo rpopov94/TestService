@@ -108,3 +108,4 @@ sw.*
 
 # Vim swap files
 *.swp
+*.bat
