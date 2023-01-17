@@ -2,8 +2,10 @@
   <div>
     <div class="container">
       <h1>Привет, это главная страница</h1>
-      <div v-for="post in posts" :key="post.slug" class="blog">
-        <div class="blog-title">{{ post.name}}</div>
+      <div class="d-flex justify-content-start">
+          <span v-for="post in posts" :key="post.id" class="blog">
+                <nuxt-link :to="`/themes/${post.id}`" class="mr-1 badge badge-info">{{ post.name }}</nuxt-link>
+          </span>
       </div>
     </div>
   </div>
@@ -13,7 +15,7 @@
 import axios from "axios";
 
 export default {
-  async asyncData(ctx) {
+    async asyncData(ctx) {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/themes/`);
     return {
       posts: data.results,
