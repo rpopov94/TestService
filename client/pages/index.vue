@@ -1,10 +1,16 @@
 <template>
   <div>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col><h1>Тесты по темам</h1></b-col>
+        <b-col><b-button class="modifybtn" to="#">Добавить тему</b-button></b-col>
+      </b-row>
+    </b-container>
     <div class="container">
-      <h1>Привет, это главная страница</h1>
+
       <div class="d-flex justify-content-start">
           <span v-for="post in posts" :key="post.id" class="blog">
-                <nuxt-link :to="`/themes/${post.id}`" class="mr-1 badge badge-info">{{ post.name }}</nuxt-link>
+            <ThemeCard :link="post.id" :name="post.name"/>
           </span>
       </div>
     </div>
@@ -13,12 +19,13 @@
 
 <script>
 import axios from "axios";
+import ThemeCard from "@/src/components/ThemeCard";
 
 export default {
+  components: {ThemeCard},
   middleware: ["auth"],
-    async asyncData(ctx) {
+  async asyncData(ctx) {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/themes/`);
-    // this.$router.push('/')
     return {
       posts: data.results,
     }
@@ -27,5 +34,10 @@ export default {
 </script>
 
 <style>
+.modifybtn{
+  display: block;
+  float: right;
+  margin-top: 0.5em;
+}
 
 </style>

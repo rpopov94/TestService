@@ -1,4 +1,4 @@
-
+// require("dotenv").config()
 export default {
   mode: 'universal',
   /*
@@ -75,6 +75,6 @@ export default {
     }
   },
   axios: {
-    baseURL:  process.env.BASE_URL || 'http://localhost:8000',
+    baseURL:  'http://localhost:8000',
   },
 }

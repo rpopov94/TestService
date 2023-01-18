@@ -1,9 +1,12 @@
 <template>
-  <h1>{{test.name}}</h1>
+  <div class="container">
+    <h1>{{test.name}}</h1>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
   name: "_id",
   middleware: ["auth"],
