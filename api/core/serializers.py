@@ -33,7 +33,7 @@ class QuestionSerialazer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Question
-        fields = '__all__'
+        fields = ('title', 'q1', 'q2', 'q3', 'q4', 'answer', 'user')
         
 
 class ThemeSerialazer(serializers.ModelSerializer):
