@@ -39,5 +39,9 @@ export default {
   float: right;
   margin-top: 0.5em;
 }
+.bg-new {
+  background-color: #fcfafa !important;
+  color: black !important;
+}
 
 </style>
