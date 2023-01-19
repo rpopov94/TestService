@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
-from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, RegisterSerializer
+from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, RegisterSerializer, AnswerSerialazer
 from rest_framework import permissions
 from rest_framework.response import Response
 
@@ -12,7 +12,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 
 
 class QuestionsPagList(PageNumberPagination):
-    page_size = 4
+    page_size = 9
     page_query_param = 'page_size'
     max_page_size = 100
 
@@ -45,10 +45,6 @@ class ThemeAPIDestroy(generics.RetrieveDestroyAPIView):
     serializer_class = ThemeSerialazer
     permission_classes = (IsAdminOrReadOnly, )
     
-class CsrfExemptSessionAuthentication(SessionAuthentication):
-    def enforce_csrf(self, request):
-        return 
-
 class ProfileView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
@@ -71,5 +67,8 @@ class RegisterView(generics.GenericAPIView):
             "message": "Пользователь успешно создан",
         })
 
-
-
+class GetAnswersView(generics.RetrieveUpdateAPIView):
+    queryset = Test.objects.all()
+    serializer_class = AnswerSerialazer
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+    pagination_class = QuestionsPagList
