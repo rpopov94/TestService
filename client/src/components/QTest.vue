@@ -8,7 +8,7 @@
         <div class="modal-body">
           <form class="px-4" action="">
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" value="A" v-model="answer"/>
+              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q1" v-model="answer"/>
               <label class="form-check-label" for="radio3Example1">
                 {{question.q1}}
               </label>
@@ -18,7 +18,7 @@
         <div class="modal-body">
           <form class="px-4" action="">
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" value="B" v-model="answer"/>
+              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q2" v-model="answer"/>
               <label class="form-check-label" for="radio3Example1">
                 {{question.q2}}
               </label>
@@ -28,7 +28,7 @@
         <div class="modal-body">
           <form class="px-4" action="">
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" value="C" v-model="answer" />
+              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q3" v-model="answer" />
               <label class="form-check-label" for="radio3Example1">
                 {{question.q3}}
               </label>
@@ -38,7 +38,7 @@
         <div class="modal-body">
           <form class="px-4" action="">
             <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" value="D" v-model="answer"/>
+              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q4" v-model="answer"/>
               <label class="form-check-label" for="radio3Example1">
                 {{question.q4}}
               </label>
