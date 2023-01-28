@@ -30,6 +30,6 @@ urlpatterns = [
     path('api/themes/', ThemeAPIList.as_view()),
     path('api/themes/<int:pk>/', ThemeAPIUpdate.as_view()),
     path('api/themes/delete/<int:pk>', ThemeAPIDestroy.as_view()),
-    path('api/answers/<int:pk>', GetAnswersView.as_view()),
+    path('api/answers/<int:pk>/', GetAnswersView.as_view()),
     path('api/register/', RegisterView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

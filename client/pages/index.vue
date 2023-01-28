@@ -3,7 +3,7 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col><h1>Тесты по темам</h1></b-col>
-        <b-col><b-button class="modifybtn" to="#">Добавить тему</b-button></b-col>
+        <b-col v-show="$auth.loggedIn"><b-button class="modifybtn" to="#">Добавить тему</b-button></b-col>
       </b-row>
     </b-container>
     <div class="container">
@@ -23,7 +23,7 @@ import ThemeCard from "@/src/components/ThemeCard";
 
 export default {
   components: {ThemeCard},
-  middleware: ["auth"],
+  // middleware: ["auth"],
   async asyncData(ctx) {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/themes/`);
     return {

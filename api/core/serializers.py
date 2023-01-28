@@ -49,7 +49,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class QASerialazer(serializers.ModelSerializer):
+class ASerialazer(serializers.ModelSerializer):
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Question
@@ -57,7 +57,7 @@ class QASerialazer(serializers.ModelSerializer):
 
 
 class AnswerSerialazer(serializers.ModelSerializer):
-    questions = QASerialazer(many=True)
+    questions = ASerialazer(many=True)
     class Meta:
         model = Test
         fields = ('id', 'name', 'questions')
