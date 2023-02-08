@@ -1,15 +1,33 @@
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+from django.contrib.auth import get_user_model
 from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
-from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, RegisterSerializer, AnswerSerialazer
+from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, AnswerSerialazer, CustomUserRetrieveSerializer
 from rest_framework import permissions
 from rest_framework.response import Response
 
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
+CustomUser = get_user_model()
+
+class UserRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    **GET:** List details for a ``CustomUser``.
+
+    **PUT:** Update details of a ``CustomUser``.
+
+    **DELETE:** Delete a specific ``CustomUser``.
+
+    This view can be used to retrieve data for the current logged in user.
+    """
+
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserRetrieveSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
 
 class QuestionsPagList(PageNumberPagination):
     page_size = 9
@@ -27,7 +45,7 @@ class QuestionAPIDestroy(generics.RetrieveDestroyAPIView):
     serializer_class = QuestionSerialazer
     permission_classes = (IsAdminOrReadOnly, )
 
-class ThemeAPIList(generics.ListCreateAPIView):
+class ThemeAPIList(generics.ListAPIView):
     queryset = Test.objects.all()
     serializer_class = ThemeSerialazer
     permission_classes = (IsAuthenticatedOrReadOnly, )
@@ -52,19 +70,6 @@ class ProfileView(generics.GenericAPIView):
     def get(self, request, *args,  **kwargs):
         return Response({
             "user": UserSerializer(request.user, context=self.get_serializer_context()).data,
-        })
-
-class RegisterView(generics.GenericAPIView):
-    permission_classes = [permissions.AllowAny]
-    serializer_class = RegisterSerializer
-
-    def post(self, request, *args,  **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        return Response({
-            "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "message": "Пользователь успешно создан",
         })
 
 class GetAnswersView(generics.RetrieveUpdateAPIView):

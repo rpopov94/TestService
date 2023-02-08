@@ -1,32 +1,50 @@
-from rest_framework import serializers
-from core.models import Question, Test
+from rest_framework import serializers, validators
+from core.models import Question, Test, CustomUser
 from django.contrib.auth.models import User
 
 
 
-class RegisterSerializer(serializers.ModelSerializer):
+class CustomUserSerializer(serializers.ModelSerializer):
+    """
+    We use this serializer for user registration. Most of the fields have
+    `required=False`, but can be configured as needed. This serializer is used
+    in `accounts.viewsets.CustomUserModelViewSet`.
+    """
 
-    password2 = serializers.CharField(write_only=True)
+    email = serializers.CharField(
+        write_only=True, validators=[validators.UniqueValidator(
+            message='This email already exists',
+            queryset=CustomUser.objects.all()
+        )]
+    )
+    password = serializers.CharField(write_only=True)
+    birth_date = serializers.CharField(required=False)
+    bio = serializers.CharField(required=False)
+    gender = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
+    first_name = serializers.CharField(required=False)
+    birth_date = serializers.CharField(required=False)
 
     class Meta:
-        model = User
-        fields = [
-            "username",
-            "password",
-            "password2",
-        ]
-        extra_kwargs = {"password": {"write_only": True}}
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'email',
+                  'password', 'bio', 'gender', 'birth_date')
 
-    def create(self, validated_data):
-        username = validated_data["username"]
-        password = validated_data["password"]
-        password2 = validated_data["password2"]
-        if password != password2:
-            raise serializers.ValidationError({"password": "Пароли не совпадают"})
-        user = User(username=username)
-        user.set_password(password)
-        user.save()
-        return user
+
+class CustomUserRetrieveSerializer(serializers.ModelSerializer):
+    """
+    We use this serializer to retrieve data of the currently logged in user.
+    It is used in `accounts.views.UserRetrieveUpdateDestroyAPIView`
+    """
+    birth_date = serializers.CharField(required=False)
+    bio = serializers.CharField(required=False)
+    gender = serializers.CharField(required=False)
+
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'email',
+                  'bio', 'gender', 'birth_date', 'id')
+
 
 
 class QuestionSerialazer(serializers.ModelSerializer):

@@ -1,18 +1,48 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.translation import gettext_lazy as _
 
+from . import managers
+
+
+class CustomUser(AbstractUser):
+    """
+    A User model that uses `email` as it's default identifier instead of
+    username.
+    """
+
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
+    bio = models.TextField()
+    gender = models.CharField(
+        max_length=140,
+        null=True,
+        choices=(
+            ('Male', 'Male'),
+            ('Female', 'Female'),
+            ('Other', 'Other')
+        )
+    )
+    birth_date = models.DateField(null=True, blank=True)
+    pro = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = managers.CustomUserManager()
+
+    def __str__(self):
+        return self.email
 
 class Test(models.Model):
     name = models.CharField(max_length=255, db_index=True)
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.name
 
 
-
 class Question(models.Model):
-    title = RichTextUploadingField()
+    title = models.CharField(max_length=255)
     q1 = models.CharField(max_length=255)
     q2 = models.CharField(max_length=255)
     q3 = models.CharField(max_length=255)
@@ -23,5 +53,6 @@ class Question(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
 
 
