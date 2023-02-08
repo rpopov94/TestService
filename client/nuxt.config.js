@@ -49,6 +49,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/dotenv'
   ],
   auth: {
     strategies: {
@@ -75,6 +76,6 @@ export default {
     }
   },
   axios: {
-    baseURL:  'http://localhost:8000',
+    baseURL: 'http://localhost:8000/api',
   },
 }

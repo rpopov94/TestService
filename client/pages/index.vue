@@ -24,12 +24,10 @@ import ThemeCard from "@/src/components/ThemeCard";
 export default {
   components: {ThemeCard},
   // middleware: ["auth"],
-  async asyncData(ctx) {
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/themes/`);
-    return {
-      posts: data.results,
-    }
-  }
+  async asyncData({$axios}) {
+  const data = await axios.get(process.env.API_URL + 'http://localhost:8000/api/themes/')
+  return { data }
+}
 }
 </script>
 
