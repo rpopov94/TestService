@@ -58,12 +58,13 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/dotenv',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: { baseURL: 'http://127.0.0.1:8000/' },
+  axios: { baseURL: 'http://127.0.0.1:8000/'},
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

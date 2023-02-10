@@ -1,44 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="590f22fb-e7f8-44ae-9f0f-7ec2e7bf525c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/assets/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/assets/variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/Logo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/VuetifyLogo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/jsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/layouts/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/layouts/default.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/layouts/error.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/middleware/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/inspire.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pages/register.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/plugins/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/v.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/vuetify-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/store/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/themes/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/themes/_id.vue" afterDir="false" />
-    </list>
+    <list default="true" id="590f22fb-e7f8-44ae-9f0f-7ec2e7bf525c" name="Changes" comment="frontend" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +9,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2IwuqgGZGEKTisB6YUoPT9kfowe" />
   <component name="ProjectViewState">
@@ -57,7 +23,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Roman/Documents/pets/TestService",
+    "last_opened_file_path": "C:/Users/Roman/Documents/GitHub/TestService",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -95,10 +61,34 @@
       <updated>1671105159212</updated>
       <workItem from="1671105162239" duration="19000" />
       <workItem from="1675873219572" duration="24000" />
+      <workItem from="1675941333720" duration="127000" />
     </task>
+    <task id="LOCAL-00001" summary="frontend">
+      <created>1675941375621</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675941375621</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="frontend" />
   </component>
 </project>

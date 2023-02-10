@@ -44,8 +44,8 @@
 export default {
   data: () => ({
     userData: {
-      email: 'email@email.com',
-      password: 'long-password',
+      email: '',
+      password: '',
       showPassword: false,
     },
   }),
