@@ -1,7 +1,7 @@
 <template>
     <ul>
         <li v-for="theme in all_themes" :key="theme.id">
-            {{ theme.name }}
+            <nuxt-link :to="`themes/${theme.id}`" :id="`${theme.id}`" >{{ theme.name }}</nuxt-link>
         </li>
     </ul>
 </template>

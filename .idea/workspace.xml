@@ -23,7 +23,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Roman/Documents/GitHub/TestService",
+    "last_opened_file_path": "C:/Users/Roman/Documents/GitHub/TestService/frontend",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +62,7 @@
       <workItem from="1671105162239" duration="19000" />
       <workItem from="1675873219572" duration="24000" />
       <workItem from="1675941333720" duration="127000" />
+      <workItem from="1676107663259" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="frontend">
       <created>1675941375621</created>
