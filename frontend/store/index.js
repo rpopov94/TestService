@@ -2,14 +2,14 @@ export const state = () => ({
     themes: {}
   })
   
-  export const mutations = {
-    setThemes(state, themes) {
-      state.themes = themes
-    },
-    setTheme(state, theme) {
-      state.themes.push(theme)
-    }
+export const mutations = {
+  setThemes(state, themes) {
+    state.themes = themes
+  },
+  setTheme(state, theme) {
+    state.themes.push(theme)
   }
+}
   
 export const actions = {
     async fetchAllThemes({ commit }) {
@@ -35,6 +35,11 @@ export const getters = {
         return state.themes
     },
     getThemeById: (state) => (id) => {
-        return state.themes[id - 1]
+        for(let i = 0; state.themes.length; i++){
+            if (state.themes[i].id == id){
+                return state.themes[i]
+            }
+        }
+        return undefined
     }
 }
