@@ -1,78 +1,38 @@
 <template>
-  <div>
-    <div v-for="(question, id) in questions" :key="id" class="mx-0 mx-sm-auto">
-      <div  class="card">
-        <div class="card-header bg-primary bg-new">
-          <h5 class="card-title mt-2" id="exampleModalLabel">{{question.title}}</h5>
-        </div>
-        <div class="modal-body">
-          <form class="px-4" action="">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q1" v-model="answer"/>
-              <label class="form-check-label" for="radio3Example1">
-                {{question.q1}}
-              </label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form class="px-4" action="">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q2" v-model="answer"/>
-              <label class="form-check-label" for="radio3Example1">
-                {{question.q2}}
-              </label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form class="px-4" action="">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q3" v-model="answer" />
-              <label class="form-check-label" for="radio3Example1">
-                {{question.q3}}
-              </label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form class="px-4" action="">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" name="exampleForm" id="radio3Example1" :value="question.q4" v-model="answer"/>
-              <label class="form-check-label" for="radio3Example1">
-                {{question.q4}}
-              </label>
-            </div>
-          </form>
-        </div>
-      </div>
+  <v-form>
+    <div v-for="(question, id) in questions" :key="id">
+        <h3>{{question.title}}</h3><br>
+        <input type="checkbox" id="jack" :value="question.q1" v-model="checkedq1">
+        <label for="jack">{{question.q1}}</label>
+        <br>
+        <input type="checkbox" id="john" :value="question.q2" v-model="checkedq2">
+        <label for="john">{{question.q2}}</label>
+        <br>
+        <input type="checkbox" id="mike" :value="question.q3" v-model="checkedq3">
+        <label for="mike">{{question.q3}}</label>
+        <br>
+        <input type="checkbox" id="mike" :value="question.q4" v-model="checkedq4">
+        <label for="mike">{{question.q4}}</label>
+        <br>
+<!--        <span>Отмеченные имена: {{ checkedq1 }}-{{ checkedq2 }}-{{ checkedq3}}-{{ checkedq4 }}</span>-->
+<!--        <v-form />-->
     </div>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>Complete</b-col>
-        <b-col><b-button class="modifybtn" to="#">Send</b-button></b-col>
-      </b-row>
-    </b-container>
-  </div>
+  </v-form>
 </template>
 
 <script>
-
 export default {
-  name: "QTest",
-  props: ["questions"],
   data() {
     return {
-      answer: [],
+      checkedq1: [],
+      checkedq2: [],
+      checkedq3: [],
+      checkedq4: []
     }
   },
+  props: {
+    questions: []
+  }
 }
-</script>
 
-<style scoped>
-.modifybtn{
-  display: block;
-  float: right;
-  margin-top: 0.5em;
-}
-</style>
+</script>
