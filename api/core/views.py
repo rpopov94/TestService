@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.auth import get_user_model
 from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
-from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, AnswerSerialazer, CustomUserRetrieveSerializer
+from core.serializers import QuestionSerialazer, ThemeSerialazer, UserSerializer, AnswerSerialazer, CustomUserRetrieveSerializer, ThemeNameListSerialazer
 from rest_framework import permissions
 from rest_framework.response import Response
 
@@ -47,7 +47,7 @@ class QuestionAPIDestroy(generics.RetrieveDestroyAPIView):
 
 class ThemeAPIList(generics.ListAPIView):
     queryset = Test.objects.all()
-    serializer_class = ThemeSerialazer
+    serializer_class = ThemeNameListSerialazer
     permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 

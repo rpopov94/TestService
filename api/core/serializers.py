@@ -60,6 +60,10 @@ class ThemeSerialazer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'name', 'questions')
 
+class ThemeNameListSerialazer(serializers.ModelSerializer):
+    class Meta:
+        model = Test
+        fields = ('id', 'name')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
