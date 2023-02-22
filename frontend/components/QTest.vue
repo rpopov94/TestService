@@ -14,8 +14,6 @@
         <input type="checkbox" id="mike" :value="question.q4" v-model="checkedq4">
         <label for="mike">{{question.q4}}</label>
         <br>
-<!--        <span>Отмеченные имена: {{ checkedq1 }}-{{ checkedq2 }}-{{ checkedq3}}-{{ checkedq4 }}</span>-->
-<!--        <v-form />-->
     </div>
   </v-form>
 </template>

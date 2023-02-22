@@ -1,5 +1,6 @@
 export const state = () => ({
-    themes: {}
+    themes: {},
+    theme: {}
   })
 
 export const mutations = {
@@ -7,7 +8,7 @@ export const mutations = {
     state.themes = themes
   },
   setTheme(state, theme) {
-    state.themes.push(theme)
+    state.theme = theme
   }
 }
 
@@ -34,12 +35,7 @@ export const getters = {
     getAllThemes: (state) => {
         return state.themes
     },
-    getThemeById: (state) => (id) => {
-        for(let i = 0; state.themes.length; i++){
-            if (state.themes[i].id == id){
-                return state.themes[i]
-            }
-        }
-        return undefined
+    getThemeById: (state) => {
+        return state.theme
     }
 }
