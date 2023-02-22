@@ -36,6 +36,7 @@ class CustomUser(AbstractUser):
 
 class Test(models.Model):
     name = models.CharField(max_length=255, db_index=True)
+    descriptor = models.CharField(max_length=255, db_index=True)
     user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.name
@@ -49,8 +50,7 @@ class Question(models.Model):
     q4 = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
     test = models.ForeignKey(Test, related_name='questions',on_delete=models.CASCADE)
-    
-    
+        
     def __str__(self) -> str:
         return self.title
 

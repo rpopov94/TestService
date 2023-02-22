@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <h1>{{theme.name}}</h1>
+  <v-container>
+    <v-card-title>{{theme.name}}</v-card-title>
     <QTest :questions="theme.questions"/>
-  </div>
-
+  </v-container>
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState} from 'vuex'
 import QTest from "~/components/QTest.vue";
 
 export default {

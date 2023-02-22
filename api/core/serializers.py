@@ -63,7 +63,7 @@ class ThemeSerialazer(serializers.ModelSerializer):
 class ThemeNameListSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Test
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'descriptor')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
