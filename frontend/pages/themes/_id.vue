@@ -13,7 +13,7 @@ import QTest from "~/components/QTest.vue";
 export default {
   middleware: ['auth'],
   components: [
-    'QTest'
+    QTest
   ],
   created(){
     this.$store.dispatch('fetchThemeById', this.$route.params.id)

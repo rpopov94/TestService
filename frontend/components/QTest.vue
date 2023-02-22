@@ -1,20 +1,14 @@
 <template>
   <v-form>
-    <div v-for="(question, id) in questions" :key="id">
-        <h3>{{question.title}}</h3><br>
-        <input type="checkbox" id="jack" :value="question.q1" v-model="checkedq1">
-        <label for="jack">{{question.q1}}</label>
-        <br>
-        <input type="checkbox" id="john" :value="question.q2" v-model="checkedq2">
-        <label for="john">{{question.q2}}</label>
-        <br>
-        <input type="checkbox" id="mike" :value="question.q3" v-model="checkedq3">
-        <label for="mike">{{question.q3}}</label>
-        <br>
-        <input type="checkbox" id="mike" :value="question.q4" v-model="checkedq4">
-        <label for="mike">{{question.q4}}</label>
-        <br>
-    </div>
+    <v-card v-for="(question, id) in questions" :key="id" class="mb-4">
+      <v-card-title class="text-h6">{{ question.title }}</v-card-title>
+        <v-container>
+          <v-checkbox :key="`1${id}`" :label="question.q1" :value="question.q1" v-model="checkedq1" />
+          <v-checkbox :key="`2${id}`" :label="question.q2" :value="question.q2" v-model="checkedq2" />
+          <v-checkbox :key="`3${id}`" :label="question.q3" :value="question.q3" v-model="checkedq3" />
+          <v-checkbox :key="`4${id}`" :label="question.q4" :value="question.q4" v-model="checkedq4" />
+        </v-container>
+      </v-card>
   </v-form>
 </template>
 

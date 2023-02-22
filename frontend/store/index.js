@@ -4,6 +4,9 @@ export const state = () => ({
   })
 
 export const mutations = {
+  clearListThemes(state) {
+    state.themes = []
+  },
   setThemes(state, themes) {
     state.themes = themes
   },
@@ -14,6 +17,7 @@ export const mutations = {
 
 export const actions = {
     async fetchAllThemes({ commit }) {
+        commit('clearListThemes')
         try {
             const { data } = await this.$axios.get('api/themes/')
             commit('setThemes', data.results)
