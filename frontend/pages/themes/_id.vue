@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>{{theme.name}}</h1>
-    <QTest :questions="theme.questions"/>
+    <h1>{{themes}}</h1>
+<!--    <QTest :questions="theme.questions"/>-->
   </div>
 
 </template>
@@ -18,18 +18,9 @@
             validate({params}){
                 return /^\d+$/.test(params.id)
             },
-            ...mapState([
-                'themes'
-            ]),
-            ...mapGetters([
-                'getThemeById'
-            ]),
-            theme () {
-                return this.getThemeById(this.$route.params.id)
-            }
+            ...mapState({
+              themes: state => state.themes
+            })
         },
-        // async fetch({ store }) {
-        //     await store.dispatch('fetchThemeById', id)
-        // }
     }
 </script>

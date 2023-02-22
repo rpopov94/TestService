@@ -1,7 +1,7 @@
 export const state = () => ({
     themes: {}
   })
-  
+
 export const mutations = {
   setThemes(state, themes) {
     state.themes = themes
@@ -10,7 +10,7 @@ export const mutations = {
     state.themes.push(theme)
   }
 }
-  
+
 export const actions = {
     async fetchAllThemes({ commit }) {
         try {
@@ -29,7 +29,7 @@ export const actions = {
         }
     }
 }
-  
+
 export const getters = {
     getAllThemes: (state) => {
         return state.themes
