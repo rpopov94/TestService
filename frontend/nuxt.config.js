@@ -38,7 +38,7 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    { src: '~/plugins/vuex-persistedstate.js', ssr: false }
+    // { src: '~/plugins/vuex-persistedstate.js', ssr: false }
   ],
   /*
    ** Auto import components

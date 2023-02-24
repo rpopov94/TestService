@@ -11,17 +11,22 @@ import QTest from "~/components/QTest.vue";
 
 export default {
   middleware: ['auth'],
-  components: [
-    QTest
-  ],
+  // components: [
+  //   QTest
+  // ],
   created(){
-    this.$store.dispatch('fetchThemeById', this.$route.params.id)
+    this.$store.dispatch('themes/fetchThemeById', this.$route.params.id)
   },
   computed: {
     validate({params}) {
       return /^\d+$/.test(params.id)
     },
-    ...mapState(['theme'])
+    // ...mapState({
+    //   theme:'theme'
+    // })
+    theme() {
+      return this.$store.getters['themes/getThemeById']
+    },
   }
 }
 </script>

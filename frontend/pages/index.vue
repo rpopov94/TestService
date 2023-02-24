@@ -32,16 +32,16 @@
 </template>
 
 <script>
-
+import {mapState} from "vuex";
 export default {
-    async fetch({store}){
-        await store.dispatch('fetchAllThemes')
+  async fetch({store}){
+    await store.dispatch('themes/fetchAllThemes')
+  },
+  computed: {
+    all_themes() {
+      return this.$store.getters['themes/getAllThemes']
     },
-    computed: {
-        all_themes() {
-            return this.$store.getters.getAllThemes
-        },
-    },
+  },
 }
 </script>
 
