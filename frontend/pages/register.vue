@@ -72,10 +72,10 @@ export default {
       this.$axios
         .$post('accounts/users/', registrationInfo)
         .then((response) => {
-          console.log('Scuccessful')
+          // console.log('Scuccessful')
         })
         .catch((error) => {
-          console.log('error:', error.response)
+          // console.log('error:', error.response)
         })
       this.$auth.loginWith('local', {
         data: registrationInfo,

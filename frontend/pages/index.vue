@@ -5,11 +5,11 @@
         <template>
           <v-card
             class="mx-auto"
-            max-width="400"
+            max-width="700"
           >
             <v-img
               class="align-end text-white"
-              height="200"
+              height="300"
               :src="require(`@/assets/images/${theme.descriptor}.jpg`)"
               cover
             >

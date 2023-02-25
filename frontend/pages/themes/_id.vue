@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card-title>{{theme.name}}</v-card-title>
-    <QTest :questions="theme.questions"/>
+    <QTest :questions="theme.questions" :id="Number(this.$route.params.id)"/>
   </v-container>
 </template>
 
@@ -21,9 +21,6 @@ export default {
     validate({params}) {
       return /^\d+$/.test(params.id)
     },
-    // ...mapState({
-    //   theme:'theme'
-    // })
     theme() {
       return this.$store.getters['themes/getThemeById']
     },
