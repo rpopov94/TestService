@@ -8,7 +8,8 @@ from core.views import (
     ThemeAPIUpdate,
     ThemeAPIDestroy,
     ProfileView,
-    GetAnswersView
+    GetAnswersView,
+    TestView
     )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,4 +28,6 @@ urlpatterns = [
     path('api/themes/<int:pk>/', ThemeAPIUpdate.as_view()),
     path('api/themes/delete/<int:pk>', ThemeAPIDestroy.as_view()),
     path('api/answers/<int:pk>/', GetAnswersView.as_view()),
+    path('api/statistik/', TestView.as_view()),
+    path('api/statistik/<int:pk>/', TestView.as_view())
 ]

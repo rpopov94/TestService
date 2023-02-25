@@ -11,7 +11,6 @@ class CustomUserModelViewSet(viewsets.ModelViewSet):
     This viewset automatically provides `LIST`, `CREATE`, `RETRIEVE`,
     `UPDATE` and `DESTROY` actions.
     """
-
     serializer_class = serializers.CustomUserSerializer
     permission_classes = (permissions.AllowAny,)
     queryset = CustomUser.objects.all()

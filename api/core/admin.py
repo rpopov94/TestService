@@ -7,3 +7,5 @@ admin.site.register(Question)
 @admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
     pass
+
+admin.site.register(TestResult)

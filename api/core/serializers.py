@@ -1,7 +1,6 @@
 from rest_framework import serializers, validators
-from core.models import Question, Test, CustomUser
+from core.models import Question, Test, CustomUser, TestResult
 from django.contrib.auth.models import User
-
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -45,8 +44,6 @@ class CustomUserRetrieveSerializer(serializers.ModelSerializer):
         fields = ('first_name', 'last_name', 'email',
                   'bio', 'gender', 'birth_date', 'id')
 
-
-
 class QuestionSerialazer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
@@ -72,7 +69,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ASerialazer(serializers.ModelSerializer):
-    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Question
         fields = ('answer',)
@@ -84,4 +80,12 @@ class AnswerSerialazer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'name', 'questions')
 
+class TestSerialazer(serializers.ModelSerializer):
+    class Meta:
+        model = Test
+        fields = ('name')
 
+class StatistikSerialazer(serializers.ModelSerializer):
+    class Meta:
+        model = TestResult
+        fields = ('id', 'score', 'test', 'date_taken')

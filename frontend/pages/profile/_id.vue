@@ -1,14 +1,9 @@
 <template>
   <div class="text-center">
-    <v-progress-circular
-      :rotate="360"
-      :size="100"
-      :width="5"
-      :model-value="10"
-      color="red"
-    >
-      {{ 100 }}
-    </v-progress-circular>
+    {{ $auth.user.email }}<br>
+    {{ $auth.user.first_name}}" "{{$auth.user.last_name}}<br>
+    {{$auth.user.bio}}<br>
+    {{$auth.user.birth_date}}
   </div>
 </template>
 

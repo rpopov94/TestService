@@ -25,7 +25,6 @@ class CustomUser(AbstractUser):
     )
     birth_date = models.DateField(null=True, blank=True)
     pro = models.BooleanField(default=False)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -33,6 +32,7 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+    
 
 class Test(models.Model):
     name = models.CharField(max_length=255, db_index=True)
@@ -54,5 +54,13 @@ class Question(models.Model):
     def __str__(self) -> str:
         return self.title
 
+"""User statistik"""
+class TestResult(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, verbose_name='Тест', on_delete=models.CASCADE)
+    score = models.FloatField()
+    date_taken = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.user.email} - {self.test.name} - {self.score}"
 

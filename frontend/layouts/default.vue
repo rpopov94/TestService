@@ -1,11 +1,11 @@
 <template>
   <v-app dark>
-    <v-app-bar color="blue" :clipped-left="clipped" fixed app>    
+    <v-app-bar color="blue" :clipped-left="clipped" fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <div class="authentication-buttons">
         <div v-if="$auth.loggedIn">
-          {{ $auth.user.email }}
+          <nuxt-link :to="`profile/${$auth.user.id}`">{{$auth.user.email}}</nuxt-link>
           <v-btn icon to="/logout" class="logout-btn">
             <v-icon light @click="$auth.logout()">mdi-logout</v-icon>
           </v-btn>
