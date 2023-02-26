@@ -1,5 +1,5 @@
 from rest_framework import serializers, validators
-from core.models import Question, Test, CustomUser, TestResult
+from core.models import Question, Test, CustomUser, Statistic
 from django.contrib.auth.models import User
 
 
@@ -57,10 +57,6 @@ class ThemeSerialazer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'name', 'questions')
 
-class ThemeNameListSerialazer(serializers.ModelSerializer):
-    class Meta:
-        model = Test
-        fields = ('id', 'name', 'descriptor')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -80,12 +76,26 @@ class AnswerSerialazer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'name', 'questions')
 
-class TestSerialazer(serializers.ModelSerializer):
+class ThemeNameListSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Test
-        fields = ('name')
+        fields = ('id', 'name', 'descriptor')
 
-class StatistikSerialazer(serializers.ModelSerializer):
+class TestSerializer(serializers.ModelSerializer):
+    users = CustomUserSerializer(many=True, read_only=True)
+
     class Meta:
-        model = TestResult
-        fields = ('id', 'score', 'test', 'date_taken')
+        model = Test
+        fields = '__all__'
+
+class StatisticSerializer(serializers.ModelSerializer):
+    user = CustomUserSerializer(read_only=True)
+    class Meta:
+        model = Statistic
+        fields = '__all__'
+
+class TestStatistik(serializers.ModelSerializer):
+    statistic = StatisticSerializer(many=True)
+    class Meta:
+        model = Test
+        fields = ('id', 'name', 'descriptor', 'user', 'statistic')

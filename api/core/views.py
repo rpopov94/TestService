@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.auth import get_user_model
-from core.models import Question, Test, TestResult
+from core.models import Question, Test
 from core.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
 from core.serializers import (
                                 QuestionSerialazer,
@@ -11,7 +11,7 @@ from core.serializers import (
                                 AnswerSerialazer,
                                 CustomUserRetrieveSerializer,
                                 ThemeNameListSerialazer,
-                                StatistikSerialazer
+                                TestStatistik
                             )
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -86,8 +86,6 @@ class GetAnswersView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 
-
-class TestView(generics.RetrieveUpdateAPIView):
-    queryset = TestResult.objects.all()
-    serializer_class = StatistikSerialazer
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+class TestStatistickView(generics.ListAPIView):
+    queryset = Test.objects.all()
+    serializer_class = TestStatistik
