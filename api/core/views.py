@@ -86,6 +86,11 @@ class GetAnswersView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 
-class TestStatistickView(generics.ListAPIView):
+class TestStatistickListView(generics.ListAPIView):
     queryset = Test.objects.all()
     serializer_class = TestStatistik
+
+class TestStatistickView(generics.RetrieveUpdateAPIView):
+    queryset = Test.objects.all()
+    serializer_class = TestStatistik
+    lookup_field = 'id'
