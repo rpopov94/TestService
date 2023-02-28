@@ -7,8 +7,7 @@ from core.views import (
     ThemeAPIUpdate,
     ThemeAPIDestroy,
     GetAnswersView,
-    TestStatistickView,
-    TestStatistickListView
+    UserStatistikView
     )
 
 
@@ -22,6 +21,5 @@ urlpatterns = [
     path('api/themes/<int:pk>/', ThemeAPIUpdate.as_view()),
     path('api/themes/delete/<int:pk>', ThemeAPIDestroy.as_view()),
     path('api/answers/<int:pk>/', GetAnswersView.as_view()),
-    path('api/statistick/', TestStatistickListView.as_view()),
-    path('api/statistick/<int:id>/', TestStatistickView.as_view())
+    path('api/statistic/<int:id>/', UserStatistikView.as_view()),
 ]

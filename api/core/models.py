@@ -36,17 +36,14 @@ class CustomUser(AbstractUser):
 class Test(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     descriptor = models.CharField(max_length=255, db_index=True)
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+    score = models.FloatField()
+    date_taken = models.DateTimeField()
     def __str__(self):
         return self.name
+    
+    def formatted_date_taken(self):
+        return self.date_taken.strftime('%Y-%m-%d %H:%M:%S')
 
-class Statistic(models.Model):
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
-    score = models.FloatField()
-    date_taken = models.DateTimeField(auto_now_add=True)
-    test = models.ForeignKey(Test, related_name='statistic', on_delete=models.CASCADE)
-    def __str__(self):
-        return f"{self.user.email} - {self.score}"
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
@@ -59,6 +56,10 @@ class Question(models.Model):
         
     def __str__(self) -> str:
         return self.title
+    
+class UserTest(models.Model):
+    user = models.ForeignKey(CustomUser, related_name='exams', on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
 
 
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers, validators
-from core.models import Question, Test, CustomUser, Statistic
+from core.models import Question, Test, CustomUser, UserTest
 from django.contrib.auth.models import User
 
 
@@ -82,20 +82,20 @@ class ThemeNameListSerialazer(serializers.ModelSerializer):
         fields = ('id', 'name', 'descriptor')
 
 class TestSerializer(serializers.ModelSerializer):
-    users = CustomUserSerializer(many=True, read_only=True)
-
     class Meta:
         model = Test
-        fields = '__all__'
+        fields = ('id', 'name', 'score', 'date_taken')
 
-class StatisticSerializer(serializers.ModelSerializer):
-    user = CustomUserSerializer(read_only=True)
-    class Meta:
-        model = Statistic
-        fields = '__all__'
+class UserTestSerializer(serializers.ModelSerializer):
+    test = TestSerializer()
 
-class TestStatistik(serializers.ModelSerializer):
-    statistic = StatisticSerializer(many=True)
     class Meta:
-        model = Test
-        fields = ('id', 'name', 'descriptor', 'user', 'statistic')
+        model = UserTest
+        fields = ('id', 'test')
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    exams = UserTestSerializer(many=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ('id', 'email', 'bio', 'gender', 'birth_date', 'exams')

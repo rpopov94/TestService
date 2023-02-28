@@ -8,5 +8,4 @@ admin.site.register(Question)
 class UserAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Statistic)
-# admin.site.register(TestStatistic)
+admin.site.register(UserTest)

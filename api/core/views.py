@@ -11,7 +11,7 @@ from core.serializers import (
                                 AnswerSerialazer,
                                 CustomUserRetrieveSerializer,
                                 ThemeNameListSerialazer,
-                                TestStatistik
+                                CustomUserSerializer
                             )
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -20,16 +20,6 @@ from rest_framework.response import Response
 CustomUser = get_user_model()
 
 class UserRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    **GET:** List details for a ``CustomUser``.
-
-    **PUT:** Update details of a ``CustomUser``.
-
-    **DELETE:** Delete a specific ``CustomUser``.
-
-    This view can be used to retrieve data for the current logged in user.
-    """
-
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserRetrieveSerializer
     permission_classes = (permissions.IsAuthenticated,)
@@ -86,11 +76,8 @@ class GetAnswersView(generics.RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
     pagination_class = QuestionsPagList
 
-class TestStatistickListView(generics.ListAPIView):
-    queryset = Test.objects.all()
-    serializer_class = TestStatistik
-
-class TestStatistickView(generics.RetrieveUpdateAPIView):
-    queryset = Test.objects.all()
-    serializer_class = TestStatistik
+class UserStatistikView(generics.RetrieveUpdateAPIView):
+    queryset = CustomUser.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+    serializer_class = CustomUserSerializer
     lookup_field = 'id'
