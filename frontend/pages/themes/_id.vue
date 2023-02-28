@@ -6,14 +6,10 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
 import QTest from "~/components/QTest.vue";
 
 export default {
   middleware: ['auth'],
-  // components: [
-  //   QTest
-  // ],
   created(){
     this.$store.dispatch('themes/fetchThemeById', this.$route.params.id)
   },
