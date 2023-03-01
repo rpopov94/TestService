@@ -81,17 +81,16 @@ class ThemeNameListSerialazer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'name', 'descriptor')
 
-class TestSerializer(serializers.ModelSerializer):
+class ThemeSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Test
-        fields = ('id', 'name', 'score', 'date_taken')
+        fields = ('name',)
 
 class UserTestSerializer(serializers.ModelSerializer):
-    test = TestSerializer()
-
+    test = ThemeSerialazer()
     class Meta:
         model = UserTest
-        fields = ('id', 'test')
+        fields = ('id', 'test', 'score', 'date_taken')
 
 class CustomUserSerializer(serializers.ModelSerializer):
     exams = UserTestSerializer(many=True)
