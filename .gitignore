@@ -63,3 +63,4 @@ __pycache__
 *.pyc
 
 *.sqlite3
+/api/.pytest_cache

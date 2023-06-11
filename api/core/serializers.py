@@ -44,15 +44,18 @@ class CustomUserRetrieveSerializer(serializers.ModelSerializer):
         fields = ('first_name', 'last_name', 'email',
                   'bio', 'gender', 'birth_date', 'id')
 
+
 class QuestionSerialazer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Question
         fields = ('title', 'q1', 'q2', 'q3', 'q4', 'user')
-        
+
 
 class ThemeSerialazer(serializers.ModelSerializer):
     questions = QuestionSerialazer(many=True)
+
     class Meta:
         model = Test
         fields = ('id', 'name', 'questions')
@@ -72,25 +75,31 @@ class ASerialazer(serializers.ModelSerializer):
 
 class AnswerSerialazer(serializers.ModelSerializer):
     questions = ASerialazer(many=True)
+
     class Meta:
         model = Test
         fields = ('id', 'name', 'questions')
+
 
 class ThemeNameListSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'name', 'descriptor')
 
+
 class ThemeSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('name',)
 
+
 class UserTestSerializer(serializers.ModelSerializer):
     test = ThemeSerialazer()
+
     class Meta:
         model = UserTest
         fields = ('id', 'test', 'score', 'date_taken')
+
 
 class CustomUserSerializer(serializers.ModelSerializer):
     exams = UserTestSerializer(many=True)
